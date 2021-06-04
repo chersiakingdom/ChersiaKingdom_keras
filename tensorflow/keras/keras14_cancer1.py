@@ -33,7 +33,7 @@ model.add(Dense(10, activation = 'relu', input_shape=(30,)))
 model.add(Dense(20))
 model.add(Dense(30))
 model.add(Dense(20))
-model.add(Dense(2, activation = 'sigmoid')) # 레이어 통과값 0~1 사이로 수렴됨.
+model.add(Dense(1, activation = 'sigmoid')) # 레이어 통과값 0~1 사이로 수렴됨.
 
 #3
 model.compile(loss = 'sparse_categorical_crossentropy', optimizer='adam', metrics=['acc'])
