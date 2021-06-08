@@ -4,7 +4,6 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout
 from tensorflow.keras.datasets import cifar10
 from tensorflow.keras.constraints import max_norm
-from keraspp.skeras import plot_loss, plot_acc
 
 #1. 데이터
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
@@ -48,17 +47,12 @@ from tensorflow.keras.callbacks import EarlyStopping
 early_stop = EarlyStopping(monitor= 'val_loss', patience= 3, mode = 'min')
 
 #history = model.fit(x_train, y_train, epochs = 50, verbose = 1, validation_split= 0.2 )
-model.fit(x_train, y_train, epochs = 50, verbose = 1, validation_split= 0.2 )
+model.fit(x_train, y_train, epochs = 100, verbose = 1, validation_split= 0.2,
+          callbacks = [early_stop])
 
 #4. 예측 및 평가
 results = model.evaluate(x_test, y_test)
 print("loss : ", results[0])
 print("acc : ", results[1])
 
-'''
-plot_acc(history, '(a) Accuracy')
-plt.show()
-plot_loss(history, '(b) loss')
-plt.show()
-'''
 
